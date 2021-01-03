@@ -11,6 +11,8 @@
   
 + 객체의 return값이 Null일 경우가 있을때 Optional<> 로 감싼다.
 
++ AOP 동작시 프록시가 호출 되고 joinPoint.proceed(); 가 실행될때 실제 객체를 호출한다.
+
 
 -----
 < Annotation>
@@ -31,3 +33,11 @@
 + @Transactional : '테스트 케이스'에 이 애노테이션이 있으면, 테스트 시작 전에 트랜잭션을 시작하고, 
   테스트 완료 후에 항상 롤백한다. 
   이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지 않는다.
+  
++ @Entity : JPA를 사용하기 위한 애노테이션
++ @Id : PK 선언
++ @GeneratedValue : DB가 알아서 PK 생성하게하려면 (strategy = GenerationType.IDENTITY) 옵션 추가
+
++ @Aspect : AOP 선언을 위한 애노테이션
+
++ @Around("execution(* hello.hellospring..*(..))") : AOP를 적용시킬 범위 지정함

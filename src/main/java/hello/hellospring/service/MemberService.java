@@ -23,11 +23,15 @@ public class MemberService {
      * 회원가입
      */
     public Long join(Member member){
-        //같은 이름의 회원이 있으면 안된다.
-        validateDuplicateMember(member);//중복회원검증
 
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+
+            //조건 : 같은 이름의 회원이 있으면 안된다.
+            validateDuplicateMember(member);//중복회원검증
+
+            memberRepository.save(member);
+            return member.getId();
+
     }
 
     private void validateDuplicateMember(Member member) {
@@ -41,6 +45,7 @@ public class MemberService {
      * 전체 회원조회
      */
     public List<Member> findMembers(){
+
         return memberRepository.findAll();
     }
     public Optional<Member> findOne(Long memberId){
